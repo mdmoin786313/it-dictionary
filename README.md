@@ -1,4 +1,4 @@
-# first_app
+# IT Dictionary
 
 A new Flutter project.
 

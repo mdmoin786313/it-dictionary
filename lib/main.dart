@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
-      home: MyHomePage(title: 'Flutter Page'),
+      home: MyHomePage(title: 'Flutter App'),
     );
   }
 }
@@ -23,67 +23,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  String _name = 'Moin';
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  final _finalkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Text(
-                  'You have pushed the button this many times:',
-                  style: TextStyle(color: Colors.green),
+      body: Form(
+        key: _finalkey,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.person),
+                  hintText: 'Enter your username',
+                  labelText: 'Username',
                 ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.display1,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  icon: const Icon(Icons.enhanced_encryption),
+                  hintText: 'Enter your paassword',
+                  labelText: 'Password',
                 ),
-              ],
-            ),
-            SizedBox(
-                height: 100,
-                child: Column(
-                  children: <Widget>[
-                    Text('HEllOOOOOOOOOOO'),
-                    RaisedButton(
-                      child: Text(_name),
-                      onPressed: () => {
-                        setState(() => {
-                          _name = _name == 'Moin'? 'Nihal':'Moin'
-                        })
-                      },
-                    )
-                  ],
-                ))
-          ],
+              ),
+              new Container(
+                  padding: const EdgeInsets.only(top: 40.0),
+                  child: new RaisedButton(
+                    child: const Text('Submit'),
+                    onPressed: null,
+                  )),
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        child: Container(
-          height: 50.0,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

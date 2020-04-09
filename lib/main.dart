@@ -1,3 +1,4 @@
+import 'package:first_app/src/home.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -43,19 +44,31 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintText: 'Enter your username',
                   labelText: 'Username',
                 ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 decoration: const InputDecoration(
                   icon: const Icon(Icons.enhanced_encryption),
-                  hintText: 'Enter your paassword',
+                  hintText: 'Enter your password',
                   labelText: 'Password',
                 ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
               ),
               new Container(
                   padding: const EdgeInsets.only(top: 40.0),
                   child: new RaisedButton(
                     child: const Text('Submit'),
-                    onPressed: null,
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Home())),
                   )),
             ],
           ),
